@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiURLBrase: 'http://localhost:8081'
+  apiURLBrase: 'http://localhost:8081',
+  apiURLBrase3: 'http://localhost:8081'
 };
 
 /*
