@@ -4,11 +4,7 @@
   </ol>
 
   <div class="container">
-<<<<<<< HEAD
-    <form #alimentosForm="ngForm" (ngsubmit)="gravarAlimento()">
-=======
     <form #alimentosForm="ngForm" (ngSubmit)="gravarAlimento()">
->>>>>>> 1c464b33153f7175e0a2b8252a17e22f83ee6595
       <div class="row">
         <div class="col-md-12">
           <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
@@ -241,19 +237,11 @@
 
       <div class="row">
         <div class="col-md-4">
-<<<<<<< HEAD
-          <button type="submit" class="btn btn-primary" *ngif="!alimento.id">
-            <i class="fa fa-save"></i> Salvar
-          </button>
-
-          <button type="submit" class="btn btn-primary" *ngif="alimento.id">
-=======
           <button type="submit" class="btn btn-primary" *ngIf="!alimento.id">
             <i class="fa fa-save"></i> Salvar
           </button>
 
           <button type="submit" class="btn btn-primary" *ngIf="alimento.id">
->>>>>>> 1c464b33153f7175e0a2b8252a17e22f83ee6595
             <i class="fa fa-save"></i> Atualizar
           </button>
 
