@@ -1,0 +1,87 @@
+<h1 class="mt-4">Consulta</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Informações de Pessoas</li>
+</ol>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+        {{ mensagemSucesso }}
+      </div>
+
+      <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
+        {{ mensagemErro }}
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <button class="btn btn-warning" (click)="novoCadastro()">
+      <i class="fa fa-plus"></i>Novo
+    </button>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Data Nascimento</th>
+            <th>E-Mail</th>
+            <th>Cpf</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let minhaPessoa of pessoas">
+            <td>{{ minhaPessoa.id }}</td>
+            <td>{{ minhaPessoa.nome }}</td>
+            <td>{{ minhaPessoa.sobreNome }}</td>
+            <td>{{ minhaPessoa.dataNacimento }}</td>
+            <td>{{ minhaPessoa.eMail }}</td>
+            <td>{{ minhaPessoa.cpf }}</td>
+            <td>
+              <button class="btn btn-primary" routerLink="/pessoasForm/{{ minhaPessoa.id }}">
+                <i class="fa fa-pen-square"></i>
+              </button>
+
+              <button class="btn btn-danger" (click)="preparaDelecao(minhaPessoa)" data-toggle="modal"
+                data-target="#modalSelecao">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <div id="modalSelecao" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Confirmação</h4>
+        </div>
+
+        <div class="modal-body" *ngIf="pessoaSelecionada">
+          Confirma a deleção do aluno {{ pessoaSelecionada.nome }} ?
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-success" (click)="deletarPessoa()" data-dismiss="modal">Confirmar</button>
+
+          <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

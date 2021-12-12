@@ -1,0 +1,89 @@
+<h1 class="mt-4">Alimentos</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Consulta</li>
+</ol>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+        {{ mensagemSucesso }}
+      </div>
+
+      <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">
+        {{ mensagemErro }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <button class="btn btn-success" (click)="novoAlimento()">
+      <i class="fa fa-plus"></i>Novo
+    </button>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col col-md-12">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th></th>
+          <th></th>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let meuAlimento of alimentos">
+            <td>{{meuAlimento.id}}</td>
+            <td>{{meuAlimento.nome}}</td>
+            <td>{{meuAlimento.descricao}}</td>
+            <td></td>
+            <td>
+              <button class="btn btn-primary" routerLink="/alimentosForm/{{ meuAlimento.id }}">
+                <i class="fa fa-pen-square"></i>
+              </button>
+
+              <button class="btn btn-danger" (click)="preparaDelecao(meuAlimento)" data-toggle="modal" data-target="#modalSelecao">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+  <div id="modalSelecao" class="modal fade" role="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Conrfirmar</h4>
+        </div>
+
+        <div class="modal-body" *ngIf="alimentoSelecionado">
+          Confirma a exclusão do alimento {{alimentoSelecionado.id}} , {{alimentoSelecionado.nome}} ?
+        </div>
+        <div class="modal-footer">
+
+          <button class="btn btn-success" (click)="deletarAlimento()" data-dismiss="modal">
+            Confirmar
+          </button>
+
+          <button class="btn btn-success"  data-dismiss="modal">
+            Cancelar
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

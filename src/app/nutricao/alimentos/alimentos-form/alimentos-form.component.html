@@ -1,0 +1,257 @@
+<body><h1 class="mt-4">Alimentos</h1>
+  <ol class="breadcrumb">
+    <li class="breacrumb-item active">Cadastro</li>
+  </ol>
+
+  <div class="container">
+    <form #alimentosForm="ngForm" (ngsubmit)="gravarAlimento()">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
+            Alimento Salvo/atualizado com sucesso.
+          </div>
+
+          <div class="alert alert-success" role="alert" *ngFor="let meuErro of errosApi">
+            {{ meuErro }}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>Id</label>
+            <input type="text" class="form-control" disabled="true" [(ngModel)]="alimento.id" name="id">
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.nome" name="nome">
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="form-group">
+            <label>Descrição</label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.descricao" name="descricao">
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>carboidratos</label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.carboidrato" name="carboidrato">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>colesterol</label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.colesterol" name="colesterol">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>fibra</label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.fibra" name="fibra">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>luteinazeaxantina</label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.luteinazeaxantina" name="luteinazeaxantina">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>licopeno</label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.licopeno" name="licopeno">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>niacina</label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.niacina" name="niacina">
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>proteina </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.proteina" name="proteina">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>retinol </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.retinol" name="retinol">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>riboflavina: </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.riboflavina" name="riboflavina">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>selenio: </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.selenio" name="selenio">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>açucar total: </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.acucartotal" name="acucartotal">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>tiamina: </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.tiamina" name="tiamina">
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>agua: </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.agua" name="agua">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>gordura monosaturada: </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.gorduramonosaturada" name="gorduramonosaturada">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>gordura polissaturada: </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.gordurapolissaturada" name="gordurapolissaturada">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>gordura saturada: </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.gordurasaturada" name="gordurasaturada">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>lipidio: </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.lipidio" name="lipidio">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>mineral calcio: </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.mineralcalcio" name="mineralcalcio">
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>mineral copper: </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.mineralscopper" name="mineralscopper">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>mineral ferro: </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.mineralferro" name="mineralferro">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>mineral magnesio:  </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.mineralsmagnesio" name="mineralsmagnesio">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>mineral fosforo</label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.mineralfosforo" name="mineralfosforo">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>mineral potassio </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.mineralpotassio" name="mineralpotassio">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>mineral sodio </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.mineralsodio " name="mineralsodio">
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <br><div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>mineral zinco </label>
+            <input type="text" class="form-control" [(ngModel)]="alimento.mineralzinco" name="mineralzinco">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-primary" *ngif="!alimento.id">
+            <i class="fa fa-save"></i> Salvar
+          </button>
+
+          <button type="submit" class="btn btn-primary" *ngif="alimento.id">
+            <i class="fa fa-save"></i> Atualizar
+          </button>
+
+          <button type="button" class="btn btn-danger ml-1" (click)="voltarParaListagem()">
+            <i class="fa fa-backward"></i> Voltar
+          </button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+  <br><br><br><br><br>
+  </body>
