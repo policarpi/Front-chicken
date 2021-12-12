@@ -1,0 +1,30 @@
+export class Alimentos{
+  id:number;
+  nome: string;
+  descricao: string;
+  carboidrato:number;
+  colesterol:number;
+  fibra:number;
+  luteinazeaxantina:number;
+  licopeno:number;
+  niacina:number;
+  proteina:number;
+  retinol:number;
+  riboflavina:number;
+  selenio:number;
+  acucartotal:number;
+  tiamina:number;
+  agua:number;
+  gorduramonosaturada:number;
+  gordurapolissaturada:number;
+  gordurasaturada:number;
+  lipidio:number;
+  mineralcalcio:number;
+  mineralscopper:number;
+  mineralferro:number;
+  mineralsmagnesio:number;
+  mineralfosforo:number;
+  mineralpotassio:number;
+  mineralsodio:number;
+  mineralzinco:number;
+}

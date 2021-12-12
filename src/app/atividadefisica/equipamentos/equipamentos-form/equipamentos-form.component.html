@@ -1,0 +1,54 @@
+<h1 class="mt-4">Equipamento</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Cadastro</li>
+</ol>
+
+<div class="container">
+  <form #equipamentosForm="ngForm" (ngSubmit)="gravarEquipamentos()">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
+          Equipamento salvo/atualizado com sucesso!!!
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngFor="let meuErro of errosApi">
+          {{ meuErro }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Id:</label>
+          <input type="text" class="form-control" disabled=true [(ngModel)]="equipamento.id" name="id">
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Nome:</label>
+          <input type="text" class="form-control" [(ngModel)]="equipamento.nome" name="nome">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-primary" *ngIf="!equipamento.id">
+          <i class="fa fa-save"></i>Salvar
+        </button>
+
+        <button type="submit" class="btn btn-primary" *ngIf="equipamento.id">
+          <i class="fa fa-sync-alt"></i>Atualizar
+        </button>
+
+        <button type="button" class="btn btn-danger ml-1" (click)="voltarParaListagem()">
+          <i class="fa fa-backspace"></i>Voltar
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>
