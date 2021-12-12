@@ -5,11 +5,7 @@
 export const environment = {
   production: false,
   apiURLBrase: 'http://localhost:8081',
-<<<<<<< HEAD
-  apiURLBrase2: 'http://localhost:80821'
-=======
   apiURLBrase3: 'http://localhost:8081'
->>>>>>> origin/master
 };
 
 /*
