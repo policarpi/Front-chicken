@@ -2,11 +2,14 @@ import { Refeicoes } from './nutricao/refeicoes/refeicoes';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RefeicoesService {
+
+  apiURLRefeicoe: string = environment.apiURLBrase + "/refeicoes";
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +18,7 @@ export class RefeicoesService {
   }
 
   getRefeicoes() : Observable<Refeicoes[]>{
-    return this.http.get<Refeicoes[]>('http://localhost:8080/refeicoes');
+    return this.http.get<Refeicoes[]>('apiURLRefeicoe');
   }
 
   getRefeicoesById(id:number) : Observable<Refeicoes>{
