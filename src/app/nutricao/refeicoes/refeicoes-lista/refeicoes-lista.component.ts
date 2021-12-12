@@ -22,6 +22,7 @@ export class RefeicoesListaComponent implements OnInit {
     this.servicoRefeicao.getRefeicoes()
       .subscribe(respostaComSucesso => {
         this.refeicoes = respostaComSucesso;
+        console.log("Não passou aqui")
       })
   }
 

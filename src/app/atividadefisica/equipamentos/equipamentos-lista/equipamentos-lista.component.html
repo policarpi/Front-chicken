@@ -40,7 +40,7 @@
         <tbody>
           <tr *ngFor="let meuEquipamento of equipamentos">
             <td>{{ meuEquipamento.id }}</td>
-            <td>{{ meuEquipamento.nome }}</td>
+            <td>{{ meuEquipamento.equipamentosnome }}</td>
 
             <td>
               <button class="btn btn-primary" routerLink="/equipamentosForm/{{ meuEquipamento.id }}">
@@ -67,12 +67,11 @@
         </div>
 
         <div class="modal-body" *ngIf="equipamentoSelecionado">
-          Confirma a deleção do Equipamento {{ equipamentoSelecionado.nome }} ?
+          Confirma a deleção do Equipamento {{ equipamentoSelecionado.equipamentosnome }} ?
         </div>
 
         <div class="modal-footer">
           <button class="btn btn-success" (click)="deletarEquipamento()" data-dismiss="modal">Confirmar</button>
-
           <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         </div>
       </div>

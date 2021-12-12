@@ -6,9 +6,11 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
+
 })
 export class RefeicoesService {
 
+  
   apiURLRefeicoe: string = environment.apiURLBrase + "/refeicoes";
 
   constructor(private http: HttpClient) { }
@@ -18,7 +20,7 @@ export class RefeicoesService {
   }
 
   getRefeicoes() : Observable<Refeicoes[]>{
-    return this.http.get<Refeicoes[]>('apiURLRefeicoe');
+    return this.http.get<Refeicoes[]>(this.apiURLRefeicoe);
   }
 
   getRefeicoesById(id:number) : Observable<Refeicoes>{

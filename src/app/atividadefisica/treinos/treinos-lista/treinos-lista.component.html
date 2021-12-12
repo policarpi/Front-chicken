@@ -1,1 +1,69 @@
-<p>treinos-lista works!</p>
+<h1 class="mt-4">Consulta</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta treinos</li>
+</ol>
+ <div class="container">
+     <form #consultaForm="ngForm" (submit)="consultar()">
+        <div class="row">
+            <div div class="col-md-6">
+                <label for="inputNome">Nome pessoa: </label>
+                <input type="text" [(ngModel)]="nome" name="nome" id="inputNome" class="form-control">
+            </div>
+             <br/>
+                <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-search"></i> consultar
+                    </button>
+                    <button type="button" class="btn btn-warning" routerLink="/treinosForm">
+                        <i class="fa fa-plus"></i> Novo
+                    </button>
+                </div>
+            </div>
+        </div>
+     </form>
+     
+     <br/>
+
+     <div class="row">
+        <div class="alert alert-warning" role="alert" *ngIf="message">
+            {{ message }}
+        </div>
+
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Pessoa</th>
+                      <th>Equipamento</th>
+                      <th>quantidade</th>
+                      <th>repeticao</th>
+                      <th>peso</th>
+                      <th>ficha</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let meuTreinos of lista">
+                      <td>{{ meuTreinos.id }}</td>
+                      <td>{{ meuTreinos.pessoa.nome }}</td>
+                      <td>{{ meuTreinos.equipamentos.equipamentosnome }}</td>
+                      <td>{{ meuTreinos.quantidade }}</td>
+                      <td>{{ meuTreinos.repeticao }}</td>
+                      <td>{{ meuTreinos.peso }}</td>
+                      <td>{{ meuTreinos.ficha }}</td>
+                      <td>
+                        <button class="btn btn-primary" routerLink="/treinosForm/{{ meuTreinos.id }}">
+                          <i class="fa fa-pen-square"></i>
+                        </button>
+          
+                        <button class="btn btn-danger" (click)="preparaDelecao(meuTreinos)" data-toggle="modal"
+                          data-target="#modalSelecao">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                      </td>
+                </tbody>
+            </table>
+        </div>
+     </div>
+</div>

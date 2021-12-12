@@ -1,32 +1,52 @@
 import { Treinos } from './atividadefisica/treinos/treinos';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { buscaTreino } from './atividadefisica/treinos/treinos-lista/buscaTreino';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TreinosService {
 
-  constructor(private http: HttpClient) { }
+  apiURLTreinos: string = environment.apiURLBrase + "/treinos";
 
-  salvar(treinos: Treinos ) : Observable<Treinos>{
-    return this.http.post<Treinos>('http://localhost:8080/treinos',treinos);
+  constructor(private http: HttpClient) { 
+
   }
 
-  getPessoas() : Observable<Treinos[]>{
-    return this.http.get<Treinos[]>('http://localhost:8080/treinos');
+  salvarTreino(treinos: Treinos ) : Observable<Treinos>{
+    return this.http.post<Treinos>(this.apiURLTreinos,treinos);
   }
 
-  getPessoaById(id:number) : Observable<Treinos>{
+
+  getTreino() : Observable<Treinos[]>{
+    return this.http.get<Treinos[]>(this.apiURLTreinos);
+  }
+
+  getTreinoById(id:number) : Observable<Treinos>{
     return this.http.get<Treinos>(`http://localhost:8080/treinos/${id}`);
   }
 
-  atualizarPessoa(treinos: Treinos) : Observable<any> {
+  atualizarTreino(treinos: Treinos) : Observable<any> {
     return this.http.put<Treinos>(`http://localhost:8080/treinos/${treinos.id}`, treinos);
   }
 
-  deletarPessoa(treinos: Treinos) : Observable<any> {
+  deletarTreino(treinos: Treinos) : Observable<any> {
     return this.http.delete<any>(`http://localhost:8080/treinos/${treinos.id}`);
   }
+
+  buscarTreinos(nome: string) : Observable<buscaTreino[]>{
+    if(!nome){
+      nome = "";
+    }
+    const httpParams = new HttpParams().set("nome",nome);
+    console.log(nome)
+    const url = this.apiURLTreinos + "?" + httpParams.toString();
+    console.log(url)
+    return this.http.get<any>(url);
+  }
+
+
 }
