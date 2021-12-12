@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [AlimentosFormComponent, AlimentosListaComponent],
   imports: [
     CommonModule,
+
     AlimentosRoutingModule,
     FormsModule
   ],exports:[
