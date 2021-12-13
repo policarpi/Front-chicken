@@ -1,54 +1,42 @@
 <h1 class="mt-4">Treinos</h1>
 <ol class="breadcrumb mb-4">
-  <li class="breadcrumb-item active">Cadastro</li>
+    <li class="breadcrumb-item active">Novo</li>
 </ol>
-
 <div class="container">
-  <form #equipamentosForm="ngForm" (ngSubmit)="gravarTreinos()">
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
-          Equipamento salvo/atualizado com sucesso!!!
-        </div>
-        <div class="alert alert-danger" role="alert" *ngFor="let meuErro of errosApi">
-          {{ meuErro }}
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-2">
-        <div class="form-group">
-          <label>Id:</label>
-          <input type="text" class="form-control" disabled=true [(ngModel)]="treinos.id" name="id">
-        </div>
-      </div>
-    </div>
-
+  <form #form="ngForm" (submit)="onSubmit()">
       <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label>Pessoas: </label>
-            <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="treinos.idPessoa">
-              <option value="">Selecione...</option>
-              <option *ngFor="let pessoa of pessoas" [ngValue]="pessoa.id">{{ pessoa.nome }}</option>
-            </select>
-          </div>
+          <div class="col-md-12">
+                <div class="alert alert-success" role ="alert" *ngIf = "sucesso == true">
+                    Treino salva/Atulizada com sucesso </div>
+                <div class = "alert alert-danger" role="alert" *ngFor="let erro of errosApi">
+                {{ erro }}     
+              </div>
+            </div>
+      </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Aluno: </label>
+                    <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="treinos.idPessoa">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let pessoa of pessoas" [ngValue]="pessoa.id">{{ pessoa.nome }}</option>
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label>Equipamentos: </label>
-              <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="treinos.id_equipamento">
-                <option value="">Selecione...</option>
-                <option *ngFor="let equipameto of equipamentos " [ngValue]="equipameto.id">{{ equipameto.nome }}</option>
-              </select>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Equipamentos: </label>
+                    <select class="form-control"[ngModelOptions]="{standalone: true}" [(ngModel)]="treinos.id_equipamento">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let equipamento of equipamentos " [ngValue]="equipamento.id">{{ equipamento.equipamentosnome }}</option>
+                    </select>
+                </div>
             </div>
-          </div>
         </div>
-    
+
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -85,26 +73,23 @@
               </div>
             </div>
           </div>
+  
+          <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-save"></i> Salvar
+                </button>
 
-    </div>
-
-    <div class="row">
-      <div class="col-md-4">
-        <button type="submit" class="btn btn-primary" *ngIf="!treinos.id">
-          <i class="fa fa-save"></i>Salvar
-        </button>
-
-        <button type="submit" class="btn btn-primary" *ngIf="treinos.id">
-          <i class="fa fa-sync-alt"></i>Atualizar
-        </button>
-
-        <button type="button" class="btn btn-danger ml-1" (click)="voltarParaListagem()">
-          <i class="fa fa-backspace"></i>Voltar
-        </button>
-      </div>
-    </div>
+                <button type="button" class="btn btn-danger ml-1" routerLink="/treinosLista">
+                    <i class="fa fa-arrow-alt-circle-left"></i> 
+                    Voltar
+                </button>
+            </div>
+          </div>  
   </form>
 </div>
+
+
 <!--
 
 <h1 class="mt-4">Treinos</h1>
@@ -141,9 +126,9 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>Equipamentos: </label>
-          <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="treinos.idEquipamentos">
+          <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="treinos.id_equipamento">
             <option value="">Selecione...</option>
-            <option *ngFor="let equipameto of equipamentos " [ngValue]="equipameto.id">{{ equipameto.nome }}</option>
+            <option *ngFor="let equipamento of equipamentos " [ngValue]="equipamento.id">{{ equipamento.equipamentosnome }}</option>
           </select>
         </div>
       </div>

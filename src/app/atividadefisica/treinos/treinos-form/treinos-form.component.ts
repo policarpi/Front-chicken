@@ -24,7 +24,6 @@ export class TreinosFormComponent implements OnInit {
 
   constructor(private servicoTreinos: TreinosService,
               private rota: Router,
-              private rotaAtiva: ActivatedRoute,
               private servicoPessoa: PessoasService,
               private servicoEquipamento: EquipamentosService) {
     this.treinos = new Treinos();
@@ -34,46 +33,20 @@ export class TreinosFormComponent implements OnInit {
     
     this.servicoPessoa.getPessoas().subscribe(respostaSucesso => this.pessoas = respostaSucesso);
     this.servicoEquipamento.getEquipamentos().subscribe(respostaSucesso =>this.equipamentos = respostaSucesso);
-    let params: Observable<Params>=this.rotaAtiva.params;
-
-     params.subscribe(parametrosRecebidos=>{
-       this.id = parametrosRecebidos['id'];
-       if(this.id){
-          this.servicoTreinos.getTreinoById(this.id)
-          .subscribe(respostaComSucesso=>{
-            this.treinos = respostaComSucesso;
-          }, respostaComErro=>{
-            this.treinos = new Treinos();
-          })
-       }
-     })
   }
-
-  gravarTreinos() {
-    if (this.id) {
-      this.servicoTreinos
-        .atualizarTreino(this.treinos)
-        .subscribe(respostaComSucesso => {
-          this.sucesso = true;
-          this.errosApi = null;
-        }, respostaComErro => {
-          this.sucesso = false;
-          this.errosApi = respostaComErro.error.erros;
-        })
-    } else {
-      this.servicoTreinos
-        .salvarTreino(this.treinos)
-        .subscribe(respostaComSucesso => {
-          this.sucesso = true;
-          this.errosApi = null;
-          this.treinos = respostaComSucesso;
-        }, respostaComErro => {
-          this.sucesso = false;
-          this.errosApi = respostaComErro.error.erros;
-        })
+  onSubmit(){
+    this.servicoTreinos
+    .salvarTreino(this.treinos)
+    .subscribe(response => {
+      this.sucesso = true;
+      this.errosApi = null;
+      this.treinos = new Treinos();
+    }, errorResponse => {
+      this.errosApi = errorResponse.error.erros;
+      this.sucesso = false;
     }
-  }
-
+      )}
+  
   voltarParaListagem() {
     this.rota.navigate(['/treinosLista']);
   }
