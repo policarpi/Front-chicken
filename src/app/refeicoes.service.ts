@@ -6,9 +6,11 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
+
 })
 export class RefeicoesService {
 
+  
   apiURLRefeicoe: string = environment.apiURLBrase + "/refeicoes";
 
   constructor(private http: HttpClient) { }

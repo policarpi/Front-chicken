@@ -5,5 +5,5 @@ export class Treinos{
   quantidade: number;
   repeticao: number;
   peso: number;
-  ficha: number;
+  ficha: string;
 }

@@ -1,4 +1,5 @@
 export class Equipamentos{
   id: number;
-  nome: string;
+  equipamentosnome: string;
+  descricao: string;
 }

@@ -1,12 +1,17 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { buscaDieta } from './nutricao/dieta/dieta-lista/buscaDieta';
 import { Dietas } from './nutricao/dieta/dietas';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DietaService {
+  
+  apiURLDieta: string = environment.apiURLBrase + "/dieta";
+
 
   constructor(private http: HttpClient) {
 
@@ -31,4 +36,16 @@ export class DietaService {
   deletarDieta(dieta: Dietas) : Observable<any> {
     return this.http.delete<any>(`http://localhost:8080/dieta/${dieta.id}`);
   }
+
+  buscarDieta(nome: string) : Observable<buscaDieta[]>{
+    if(!nome){
+      nome = "";
+    }
+    const httpParams = new HttpParams().set("nome",nome);
+    console.log(nome)
+    const url = this.apiURLDieta + "?" + httpParams.toString();
+    console.log(url)
+    return this.http.get<any>(url);
+  }
+
 }
