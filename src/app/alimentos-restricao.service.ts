@@ -24,11 +24,20 @@ export class AlimentosRestricaoService {
     if(!nome){
       nome = "";
     }
+<<<<<<< HEAD
     const httpParams = new HttpParams().set("nome",nome);
     console.log(nome)
     const url = this.apiURLAlimentosRestricao + "?" + httpParams.toString();
     console.log(url)
     return this.http.get<any>(url);
+=======
+    const httpParams = new HttpParams().set("nome", nome);
+
+    const urlDeBusca = "http://localhost:8080/alimentosrestricao/" + '?' + httpParams.toString();
+    return this.http.get<any>(urlDeBusca);
+
+
+>>>>>>> 966858874515dc6243bdf6f804c966b43aaffe02
   }
 
   getAlimentosRestricao() : Observable<AlimentosRestricao[]>{

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <h1 class="mt-4">Consulta</h1>
+=======
+<h1 class="mt-4">Alimentos Restricao</h1>
+>>>>>>> 966858874515dc6243bdf6f804c966b43aaffe02
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Consulta</li>
 </ol>
@@ -30,6 +34,7 @@
             {{ message }}
         </div>
 
+<<<<<<< HEAD
         <div class="col-md-12">
             <table class="table">
                 <thead>
@@ -77,3 +82,70 @@
           </div>
         </div>
 </div>
+=======
+  <form #consultarAlimentosRestricaoForm="ngForm" (submit)="consultarAlimentosRestricao()">
+    <div class="row">
+      <div class="col-md-6">
+        <label>Nome do Alimento</label>
+        <input type="text" [(ngModel)]="nome" name="nome" id="inputNome" class="form-control">
+      </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-search"></i>Consultar
+        </button>
+
+        <button type="button" class="btn btn-warning ml-1" routerLink="/alimentosRestricaoForm">
+          <i class="fa fa-plus"></i>Novo
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <br />
+
+  <div class="row">
+    <div class="alert alert-warning" role="alert" *ngIf="message">
+      {{ message }}
+    </div>
+
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>alimentosRestricao</th>
+            <th>alimento</th>
+            <th>RestricaoAlimentar</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let minhaLista of listaDeAlimentos">
+            <td>{{ minhaLista.id}}</td>
+            <td>{{ minhaLista.alimentos.nome }} </td>
+            <td>{{ minhaLista.restricaoAlimentar.nome }}</td>
+
+            <td>
+              <button class="btn btn-primary" routerLink="/alimentosRestricaoForm/{{ minhaLista.id }}">
+                <i class="fa fa-pen-square"></i>
+              </button>
+
+              <button class="btn btn-danger"  data-toggle="modal"
+                data-target="#modalSelecao">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+</div>
+>>>>>>> 966858874515dc6243bdf6f804c966b43aaffe02

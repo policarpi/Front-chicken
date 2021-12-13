@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 <h1 class="mt-4">Dietas</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Novo</li>
+=======
+<h1 class="mt-4">AlimentosRestricao</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Cadastro</li>
+>>>>>>> 966858874515dc6243bdf6f804c966b43aaffe02
 </ol>
 <div class="container">
+<<<<<<< HEAD
   <form #form="ngForm" (submit)="gravarAlimentosRestricao()">
       <div class="row">
             <div class="col-md-12">
@@ -43,3 +50,65 @@
           </div>  
   </form>
 </div>
+=======
+    <form #AlimentoRestForm (submit)="gravarAlimento()">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
+                  Alimentos Restricao salva/atualizada com sucesso!!!
+                </div>
+
+                <div class="alert alert-danger" role="alert" *ngFor="let meuErro of errosApi">
+                    {{ meuErro }}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Alimento</label>
+                    <select class="form-control" [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="alimentoRestrito.idAlimentos">
+                        <option >Selecione..</option>
+                        <option *ngFor="let MeusAlimentos of alimentos" ngValue="MeusAlimentos.id">
+                          {{ MeusAlimentos.id }} - {{ MeusAlimentos.nome }} - {{ MeusAlimentos.descricao }}
+
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Restrição Alimentar</label>
+                    <select class="form-control" [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="alimentoRestrito.idRestricaoAlimentar">
+                      <option >Selecione..</option>
+                      <option *ngFor="let minharestricaoAlimentar of restricaoAlimentar" [ngValue]="minharestricaoAlimentar.id">
+                        {{ minharestricaoAlimentar.id }} - {{ minharestricaoAlimentar.nome }} - {{ minharestricaoAlimentar.descricao }}
+                      </option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-save"></i>Salvar
+                </button>
+
+                <button type="button" class="btn btn-danger ml-1" routerLink="/alimentosRestricaoLista">
+                    <i class="fa fa-arrow-alt-circle-left"></i>Voltar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+>>>>>>> 966858874515dc6243bdf6f804c966b43aaffe02

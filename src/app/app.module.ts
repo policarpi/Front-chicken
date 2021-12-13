@@ -1,3 +1,4 @@
+import { DietaService } from './dieta.service';
 import { AlimentosRestricaoService } from './alimentos-restricao.service';
 import { AlimentosrestricaoModule } from './nutricao/alimentosrestricao/alimentosrestricao.module';
 import { RetricaoalimentarModule } from './nutricao/retricaoalimentar/retricaoalimentar.module';
@@ -54,7 +55,12 @@ import { FisiologiaModule } from './registros/fisiologia/fisiologia.module';
     AlimentosService,
     RestricaoalimentarService,
     AlimentosRestricaoService,
+<<<<<<< HEAD
     FisiologiaService
+=======
+    DietaService,
+
+>>>>>>> 966858874515dc6243bdf6f804c966b43aaffe02
   ],
   bootstrap: [AppComponent]
 })

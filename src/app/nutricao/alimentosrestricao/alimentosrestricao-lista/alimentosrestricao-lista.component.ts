@@ -1,9 +1,11 @@
-import { AlimentosRestricao } from './../alimentosrestricao';
 import { AlimentosRestricaoBusca } from './alimentosRestricaoBusca';
 import { Component, OnInit } from '@angular/core';
 import { AlimentosRestricaoService } from 'src/app/alimentos-restricao.service';
+<<<<<<< HEAD
 import { Router } from '@angular/router';
 import { buscaAlimentosRestricao } from './buscaAlimentosRestricao';
+=======
+>>>>>>> 966858874515dc6243bdf6f804c966b43aaffe02
 
 
 @Component({
@@ -13,24 +15,23 @@ import { buscaAlimentosRestricao } from './buscaAlimentosRestricao';
 })
 export class AlimentosrestricaoListaComponent implements OnInit {
 
-  alimentosRestricao: AlimentosRestricao[] = [];
-  alimentosRestricaoSelecionado: AlimentosRestricao;
-  mensagemSucesso: string;
-  mensagemErro: string;
-
   nome: string;
+<<<<<<< HEAD
   lista: buscaAlimentosRestricao[];
   mensagem: string;
   message: string;
 
+=======
+  listaDeAlimentos: AlimentosRestricaoBusca[];
+  message: string;
+>>>>>>> 966858874515dc6243bdf6f804c966b43aaffe02
 
-  constructor(private servico: AlimentosRestricaoService,
-    private rota: Router) { }
+  constructor(private servico : AlimentosRestricaoService) { }
 
   ngOnInit(): void {
-
   }
 
+<<<<<<< HEAD
   consultar(){
     this.mensagem = null;
     this.servico
@@ -68,4 +69,20 @@ export class AlimentosrestricaoListaComponent implements OnInit {
       )
   }
 
+=======
+  consultarAlimentosRestricao(){
+    console.log(this.nome);
+      this.message = null;
+      this.servico
+          .buscar(this.nome)
+          .subscribe(respostaComSucesso => {
+                this.listaDeAlimentos = respostaComSucesso;
+                console.log(respostaComSucesso);
+                if (this.listaDeAlimentos.length <= 0){
+                  this.message = 'Nenhum registro foi encontrado!'
+                }
+          }
+          )
+  }
+>>>>>>> 966858874515dc6243bdf6f804c966b43aaffe02
 }

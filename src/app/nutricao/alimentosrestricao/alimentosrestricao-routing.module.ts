@@ -1,5 +1,4 @@
 import { AlimentosrestricaoListaComponent } from './alimentosrestricao-lista/alimentosrestricao-lista.component';
-import { AlimentosListaComponent } from './../alimentos/alimentos-lista/alimentos-lista.component';
 import { AlimentosrestricaoFormComponent } from './alimentosrestricao-form/alimentosrestricao-form.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

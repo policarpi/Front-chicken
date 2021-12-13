@@ -14,9 +14,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AlimentosrestricaoRoutingModule,
-    FormsModule,
     RouterModule,
-
+    FormsModule
   ], exports:[
     AlimentosrestricaoFormComponent,
     AlimentosrestricaoListaComponent
