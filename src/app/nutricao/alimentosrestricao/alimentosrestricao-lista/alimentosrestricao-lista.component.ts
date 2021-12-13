@@ -3,6 +3,7 @@ import { AlimentosRestricaoBusca } from './alimentosRestricaoBusca';
 import { Component, OnInit } from '@angular/core';
 import { AlimentosRestricaoService } from 'src/app/alimentos-restricao.service';
 import { Router } from '@angular/router';
+import { buscaAlimentosRestricao } from './buscaAlimentosRestricao';
 
 
 @Component({
@@ -18,8 +19,9 @@ export class AlimentosrestricaoListaComponent implements OnInit {
   mensagemErro: string;
 
   nome: string;
-  lista: AlimentosRestricaoBusca[];
+  lista: buscaAlimentosRestricao[];
   mensagem: string;
+  message: string;
 
 
   constructor(private servico: AlimentosRestricaoService,
@@ -29,10 +31,10 @@ export class AlimentosrestricaoListaComponent implements OnInit {
 
   }
 
-  consultarAlimentosRestricao(){
+  consultar(){
     this.mensagem = null;
     this.servico
-    .buscar(this.nome)
+    .buscarAlimentosRestricao(this.nome)
     .subscribe(respostaSucesso =>{
       this.lista = respostaSucesso;
       if(this.lista.length <= 0){
@@ -50,7 +52,7 @@ export class AlimentosrestricaoListaComponent implements OnInit {
     this.alimentosRestricaoSelecionado = alimentosRestricao;
   }
 
-  deletarTreino() {
+  deletarRestricao() {
     this.servico
       .deletarAlimentosRestricao(this.alimentosRestricaoSelecionado)
       .subscribe(

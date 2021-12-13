@@ -1,76 +1,45 @@
-<h1 class="mt-4">Alimentos Restrição</h1>
+<h1 class="mt-4">Dietas</h1>
 <ol class="breadcrumb mb-4">
-  <li class="breadcrumb-item active">Cadastro</li>
+    <li class="breadcrumb-item active">Novo</li>
 </ol>
-
 <div class="container">
-  <form #AlimentosRestricaoform="ngForm" (submit)="gravarAlimentosRestricao()">
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
-          Alimento restrito salvo/atualizado com sucesso!!!
-        </div>
-
-        <div class="alert alert-danger" role="alert" *ngFor="let meuErro of errosApi">
-          {{ meuErro }}
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-            <label>Id:</label>
-            <input type="text" class="form-control" disabled=true
-            [(ngModel)]="alimentosrestricao.id" name="id" >
-        </div>
-    </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label>Alimento</label>
-          <select class="form-control" [ngModelOptions]="{standalone: true}"
-            [(ngModel)]="alimentosrestricao.idAlimentos">
-            <option value="">Selecione..</option>
-            <option *ngFor="let meuAlimento of alimentos" [ngValue]="meuAlimento.id">
-              {{ meuAlimento.nome }}
-            </option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label>Restrição Alimentar</label>
-          <select class="form-control" [ngModelOptions]="{standalone: true}"
-            [(ngModel)]="alimentosrestricao.idRestricaoAlimentar">
-            <option value="">Selecione..</option>
-            <option *ngFor="let minhaRestricaoAlimentar of restricaoAlimentar" [ngValue]="minhaRestricaoAlimentar.id">
-              {{ minhaRestricaoAlimentar.nome}}, {{minhaRestricaoAlimentar.descricao}}
-            </option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="row">
-      <div class="col-md-4">
-        <button type="submit" class="btn btn-success">
-          <i class="fa fa-save"></i>Salvar
-        </button>
-
-        <button type="button" class="btn btn-danger ml-1" routerLink="/alimentosRestricaoLista">
-          <i class="fa fa-arrow-alt-circle-left"></i>Voltar
-        </button>
-      </div>
-    </div>
+  <form #form="ngForm" (submit)="gravarAlimentosRestricao()">
+      <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role ="alert" *ngIf = "sucesso == true">  Restrição salva/Atualizada com sucesso </div>
+                <div class = "alert alert-danger" role="alert" *ngFor="let erro of errosApi"> </div>
+            </div>
+      
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Alimento: </label>
+                    <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="alimentosrestricao.idAlimentos">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let alimento of alimentos" [ngValue]="alimento.id">{{ alimento.nome }}</option>
+                    </select>
+                </div>
+            </div>
+        
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Alimento: </label>
+                    <select class="form-control"[ngModelOptions]="{standalone: true}" [(ngModel)]="alimentosrestricao.idRestricaoAlimentar">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let restricaoalimentar of restricaoAlimentar " [ngValue]="restricaoalimentar.id">{{ restricaoalimentar.nome }}</option>
+                    </select>
+                </div>
+          </div>
+          </div>
+          <div class="row">
+              <div class="col-md-3">
+                  <button type="submit" class="btn btn-success">
+                      <i class="fa fa-save"></i> Salvar
+                  </button>
+                  <button type="button" class="btn btn-danger ml-1" routerLink="/alimentosRestricaoLista">
+                      <i class="fa fa-arrow-alt-circle-left"></i> 
+                      Voltar
+                  </button>
+            </div>
+          </div>  
   </form>
 </div>

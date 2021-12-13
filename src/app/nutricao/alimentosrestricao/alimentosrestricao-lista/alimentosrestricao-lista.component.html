@@ -1,72 +1,79 @@
-<h1 class="mt-4">Notas</h1>
+<h1 class="mt-4">Consulta</h1>
 <ol class="breadcrumb mb-4">
-  <li class="breadcrumb-item active">Consulta</li>
+    <li class="breadcrumb-item active">Consulta</li>
 </ol>
+ <div class="container">
+     <form #consultaForm="ngForm" (submit)="consultar()">
+        <div class="row">
+            <div div class="col-md-6">
+                <label for="inputNome">Restrições: </label>
+                <input type="text" [(ngModel)]="nome" name="nome" id="inputNome" class="form-control">
+            </div>
+             <br/>
+                <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-search"></i> consultar
+                    </button>
+                    <button type="button" class="btn btn-warning" routerLink="/alimentosRestricaoForm">
+                        <i class="fa fa-plus"></i> Novo
+                    </button>
+                </div>
+            </div>
+        </div>
+     </form>
+     
+     <br/>
 
-<div class="container">
+     <div class="row">
+        <div class="alert alert-warning" role="alert" *ngIf="message">
+            {{ message }}
+        </div>
 
-  <form #consultarAlimentosRestricaoForm="ngForm" (submit)="consultarAlimentosRestricao()">
-    <div class="row">
-      <div class="col-md-6">
-        <label>Id Do Alimento</label>
-        <input type="text" [(ngModel)]="nome" name="nome" id="inputNome" class="form-control">
-      </div>
-    </div>
-
-    <br />
-
-    <div class="row">
-      <div class="col-md-3">
-        <button type="submit" class="btn btn-primary">
-          <i class="fa fa-search"></i>Consultar
-        </button>
-
-        <button type="button" class="btn btn-warning ml-1" routerLink="/alimentosRestricaoForm">
-          <i class="fa fa-plus"></i>Novo
-        </button>
-      </div>
-    </div>
-  </form>
-
-  <br />
-
-  <div class="row">
-    <div class="alert alert-warning" role="alert" *ngIf="mensagem">
-      {{ mensagem }}
-    </div>
-
-    <div class="col-md-12">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>alimentosRestricao</th>
-            <th>alimento</th>
-            <th>RestricaoAlimentar</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let minhaLista of lista">
-            <td>{{ minhaLista.alimentosRestricao.id }}</td>
-            <td>{{ minhaLista.alimento.nome }} </td>
-            <td>{{ minhaLista.restricaoAlimentar.nome }}</td>
-
-            <td>
-              <button class="btn btn-primary" routerLink="/alimentosRestricaoForm/{{ minhaLista.id }}">
-                <i class="fa fa-pen-square"></i>
-              </button>
-
-              <button class="btn btn-danger" (click)="preparaDelecao(minhaLista)" data-toggle="modal"
-                data-target="#modalSelecao">
-                <i class="fa fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-
-
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Alimento</th>
+                        <th>Tipo restricao</th>
+                        <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let restricao  of lista">
+                        <td>{{ restricao.alimentos.nome }}</td>
+                        <td>{{ restricao.restricaoAlimentar.nome }}</td>
+                       
+                        <td><button class="btn btn-primary" routerLink="/aliemntosRestricaoForm/{{ restricao.id }}">
+                            <i class="fa fa-pen-square"></i>
+                          </button>
+            
+                          <button class="btn btn-danger" (click)="preparaDelecao(restricao)" data-toggle="modal"
+                            data-target="#modalSelecao">
+                            <i class="fa fa-trash"></i>
+                          </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+     </div>
+     <div id="modalSelecao" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4>Confirmação</h4>
+            </div>
+    
+            <div class="modal-body" *ngIf="alimentosRestricaoSelecionado">
+              Confirma a deleção do treinos {{ alimentosRestricaoSelecionado.id }} ?
+            </div>
+    
+            <div class="modal-footer">
+              <button class="btn btn-success" (click)="deletarRestricao()" data-dismiss="modal">Confirmar</button>
+    
+              <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
 </div>
