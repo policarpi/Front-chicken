@@ -67,4 +67,8 @@ export class PessoasFormComponent implements OnInit {
   voltarParaListagem() {
     this.minhaRota.navigate(['/pessoasLista']);
   }
+
+  enderecosForm(){
+    this.minhaRota.navigate(['/enderecoForm']);
+  }
 }

@@ -6,6 +6,7 @@ import { PessoasRoutingModule } from './pessoas-routing.module';
 import { PessoasFormComponent } from './pessoas-form/pessoas-form.component';
 import { PessoasListaComponent } from './pessoas-lista/pessoas-lista.component';
 import { FormsModule } from '@angular/forms';
+import { EnderecosModule } from '../enderecos/enderecos.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     PessoasRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    EnderecosModule
   ], exports: [
     PessoasFormComponent,
     PessoasListaComponent

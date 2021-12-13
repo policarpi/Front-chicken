@@ -1,4 +1,4 @@
-<h1 class="mt-4">Alimentos Restricao</h1>
+<h1 class="mt-4">Alimentos/Restricao</h1>
 <ol class="breadcrumb mb-4">
   <li class="breadcrumb-item active">Consulta</li>
 </ol>
@@ -39,10 +39,10 @@
       <table class="table">
         <thead>
           <tr>
-            <th>alimentosRestricao</th>
-            <th>alimento</th>
-            <th>RestricaoAlimentar</th>
-            <th></th>
+            <th>ID:</th>
+            <th>Nome do Alimento</th>
+            <th>Tipo de Restrição</th>
+            <th>Descrição</th>
           </tr>
         </thead>
         <tbody>
@@ -50,7 +50,7 @@
             <td>{{ minhaLista.id}}</td>
             <td>{{ minhaLista.alimentos.nome }} </td>
             <td>{{ minhaLista.restricaoAlimentar.nome }}</td>
-
+            <td>{{ minhaLista.restricaoAlimentar.descricao }}</td>
             <td>
               <button class="btn btn-primary" routerLink="/alimentosRestricaoForm/{{ minhaLista.id }}">
                 <i class="fa fa-pen-square"></i>

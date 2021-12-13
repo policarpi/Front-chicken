@@ -1,1 +1,91 @@
-<p>enderecos-form works!</p>
+<h1 class="mt-4">Endereços</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Cadastro</li>
+</ol>
+
+<div class="container">
+  <form #pessoasForm="ngForm" (ngSubmit)="gravarEndereco()">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
+          Pessoa salva/atualizada com sucesso!!!
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngFor="let meuErro of errosApi">
+          {{ meuErro }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Id:</label>
+          <input type="text" class="form-control" disabled=true [(ngModel)]="endereco.id" name="id">
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Id Pessoa:</label>
+          <input type="text" class="form-control" disabled=true [(ngModel)]="endereco.idPessoa" name="idPessoa">
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>cep:</label>
+          <input type="text" class="form-control" [(ngModel)]="endereco.cep" name="cep">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>endereco:</label>
+          <input type="text" class="form-control" [(ngModel)]="endereco.endereco" name="dataNascimento">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>numero:</label>
+          <input type="text" class="form-control" [(ngModel)]="endereco.numero" name="eMail">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>cidade:</label>
+          <input type="text" class="form-control" [(ngModel)]="endereco.cidade" name="cpf">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>estado:</label>
+          <input type="text" class="form-control" [(ngModel)]="endereco.estado" name="cpf">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-primary" *ngIf="!endereco.id">
+          <i class="fa fa-save"></i>Salvar
+        </button>
+
+        <button type="submit" class="btn btn-primary" *ngIf="endereco.id">
+          <i class="fa fa-sync-alt"></i>Atualizar
+        </button>
+
+        <button type="button" class="btn btn-danger ml-1" (click)="voltarParaListagem()">
+          <i class="fa fa-backspace"></i>Voltar
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>

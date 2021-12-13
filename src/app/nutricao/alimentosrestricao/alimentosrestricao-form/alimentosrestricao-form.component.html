@@ -26,8 +26,8 @@
                     <select class="form-control" [ngModelOptions]="{standalone: true}"
                     [(ngModel)]="alimentoRestrito.idAlimentos">
                         <option >Selecione..</option>
-                        <option *ngFor="let MeusAlimentos of alimentos" ngValue="MeusAlimentos.id">
-                          {{ MeusAlimentos.id }} - {{ MeusAlimentos.nome }} - {{ MeusAlimentos.descricao }}
+                        <option *ngFor="let meusAlimentos of alimentos" [ngValue]="meusAlimentos.id">
+                         {{ meusAlimentos.nome }}
 
                         </option>
                     </select>
