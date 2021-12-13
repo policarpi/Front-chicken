@@ -1,3 +1,4 @@
+import { DietaService } from './dieta.service';
 import { AlimentosRestricaoService } from './alimentos-restricao.service';
 import { AlimentosrestricaoModule } from './nutricao/alimentosrestricao/alimentosrestricao.module';
 import { RetricaoalimentarModule } from './nutricao/retricaoalimentar/retricaoalimentar.module';
@@ -50,7 +51,9 @@ import { RestricaoalimentarService } from './restricaoalimentar.service';
     EquipamentosService,
     AlimentosService,
     RestricaoalimentarService,
-    AlimentosRestricaoService
+    AlimentosRestricaoService,
+    DietaService,
+
   ],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,6 @@
-import { AlimentosRestricao } from './../alimentosrestricao';
 import { AlimentosRestricaoBusca } from './alimentosRestricaoBusca';
 import { Component, OnInit } from '@angular/core';
 import { AlimentosRestricaoService } from 'src/app/alimentos-restricao.service';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,58 +10,27 @@ import { Router } from '@angular/router';
 })
 export class AlimentosrestricaoListaComponent implements OnInit {
 
-  alimentosRestricao: AlimentosRestricao[] = [];
-  alimentosRestricaoSelecionado: AlimentosRestricao;
-  mensagemSucesso: string;
-  mensagemErro: string;
-
   nome: string;
-  lista: AlimentosRestricaoBusca[];
-  mensagem: string;
+  listaDeAlimentos: AlimentosRestricaoBusca[];
+  message: string;
 
-
-  constructor(private servico: AlimentosRestricaoService,
-    private rota: Router) { }
+  constructor(private servico : AlimentosRestricaoService) { }
 
   ngOnInit(): void {
-
   }
 
   consultarAlimentosRestricao(){
-    this.mensagem = null;
-    this.servico
-    .buscar(this.nome)
-    .subscribe(respostaSucesso =>{
-      this.lista = respostaSucesso;
-      if(this.lista.length <= 0){
-        this.mensagem = 'Nenhum registro encontrado.';
-      }
-      console.log("Passou aqui")
-    })
+    console.log(this.nome);
+      this.message = null;
+      this.servico
+          .buscar(this.nome)
+          .subscribe(respostaComSucesso => {
+                this.listaDeAlimentos = respostaComSucesso;
+                console.log(respostaComSucesso);
+                if (this.listaDeAlimentos.length <= 0){
+                  this.message = 'Nenhum registro foi encontrado!'
+                }
+          }
+          )
   }
-
-  novoCadastro() {
-    this.rota.navigate(['/alimentosRestricaoForm'])
-  }
-
-  preparaDelecao(alimentosRestricao: AlimentosRestricao) {
-    this.alimentosRestricaoSelecionado = alimentosRestricao;
-  }
-
-  deletarTreino() {
-    this.servico
-      .deletarAlimentosRestricao(this.alimentosRestricaoSelecionado)
-      .subscribe(
-        respostaSucesso => {
-          this.mensagemSucesso = 'Alimento restrito deletado com sucesso!';
-          this.mensagemErro = null;
-          this.ngOnInit();
-        },
-        respostaErro => {
-          this.mensagemSucesso = null;
-          this.mensagemErro = 'Ocorreu um erro ao deletar o alimento selecionado!';
-        }
-      )
-  }
-
 }

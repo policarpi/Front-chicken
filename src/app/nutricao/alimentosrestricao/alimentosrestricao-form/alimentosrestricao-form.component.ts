@@ -13,23 +13,24 @@ import { AlimentosRestricaoService } from 'src/app/alimentos-restricao.service';
 })
 export class AlimentosrestricaoFormComponent implements OnInit {
 
-  alimentos: Alimentos[] = [];
-  restricaoAlimentar: RestricaoAlimentar[] = [];
-  alimentosrestricao: AlimentosRestricao;
+  alimentos: Alimentos [] = [];
+  restricaoAlimentar: RestricaoAlimentar [] = [];
+  alimentoRestrito: AlimentosRestricao;
   sucesso: boolean = false;
   errosApi: String[];
 
-  constructor(private servicoAlimentos: AlimentosService,
-              private servicoRestricaoAlimentar: RestricaoalimentarService,
-              private servicoAlimentosRestricao: AlimentosRestricaoService) {
-        this.alimentosrestricao = new AlimentosRestricao();
+  constructor(private servicoAlimento : AlimentosService,
+              private servicoRestricaoAlimentar : RestricaoalimentarService,
+              private servicoAlimentosRestritos: AlimentosRestricaoService) {
+        this.alimentoRestrito = new AlimentosRestricao();
   }
 
   ngOnInit(): void {
-      this.servicoAlimentos
+      this.servicoAlimento
           .getAlimentos()
           .subscribe(respostaComSucesso => {
               this.alimentos = respostaComSucesso;
+              console.log(this.alimentos);
           })
 
       this.servicoRestricaoAlimentar
@@ -39,13 +40,14 @@ export class AlimentosrestricaoFormComponent implements OnInit {
           })
   }
 
-  gravarAlimentosRestricao(){
-      this.servicoAlimentosRestricao
-          .salvarAlimentosRestricao(this.alimentosrestricao)
+  gravarAlimento(){
+      this.servicoAlimentosRestritos
+          .salvarAlimentosRestricao(this.alimentoRestrito)
           .subscribe(respostaComSucesso => {
                 this.sucesso = true;
                 this.errosApi = null;
-                this.alimentosrestricao = respostaComSucesso;
+                this.alimentoRestrito = respostaComSucesso;
+                console.log(this.alimentoRestrito.idAlimentos);
           }, respostaComErro => {
                 this.sucesso = false;
                 this.errosApi = respostaComErro.error.erros;
