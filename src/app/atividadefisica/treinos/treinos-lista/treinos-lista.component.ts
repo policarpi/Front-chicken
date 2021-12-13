@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TreinosService } from 'src/app/treinos.service';
-import { Equipamentos } from '../../equipamentos/equipamentos';
 import { Treinos } from '../treinos';
 import { buscaTreino } from './buscaTreino';
 

@@ -1,1 +1,69 @@
-<p>dieta-form works!</p>
+<h1 class="mt-4">Dietas</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Novo</li>
+</ol>
+<div class="container">
+  <form #form="ngForm" (submit)="onSubmit()">
+      <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role ="alert" *ngIf = "sucesso == true">  Dieta salva/Atulizada com sucesso </div>
+                <div class = "alert alert-danger" role="alert" *ngFor="let erro of errosApi"> </div>
+            </div>
+      
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Pessoa: </label>
+                    <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="dietas.idPessoa">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let pessoa of pessoas" [ngValue]="pessoa.id">{{ pessoa.nome }}</option>
+                    </select>
+                </div>
+            </div>
+        
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Alimento: </label>
+                    <select class="form-control"[ngModelOptions]="{standalone: true}" [(ngModel)]="dietas.idAlimentos">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let alimento of alimentos " [ngValue]="alimento.id">{{ alimento.nome }}</option>
+                    </select>
+                </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+                <label>Refeições: </label>
+                <select class="form-control"[ngModelOptions]="{standalone: true}" [(ngModel)]="dietas.idRefeicoes">
+                    <option value="">Selecione...</option>
+                    <option *ngFor="let refeicao of refeicoes " [ngValue]="refeicao.id">{{ refeicao.tiporefeicoes }}</option>
+                </select>
+            </div>
+      </div>
+      </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>quantidade: </label>
+                <input class="form-control" [(ngModel)]="dietas.quantidade" type="text" name="quantidade"
+                  id="inputquantidade">
+              </div>
+            </div>
+          
+  
+          </div>
+    </div>
+          <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-save"></i> Salvar
+                </button>
+
+                <button type="button" class="btn btn-danger ml-1" routerLink="/dietasLista">
+                    <i class="fa fa-arrow-alt-circle-left"></i> 
+                    Voltar
+                </button>
+            </div>
+          </div>  
+  </form>
+</div>
