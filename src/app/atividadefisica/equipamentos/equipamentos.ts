@@ -1,5 +1,4 @@
-export class 
-Equipamentos{
+export class Equipamentos{
   id: number;
   equipamentosnome: string;
   descricao: string;

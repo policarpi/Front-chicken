@@ -26,12 +26,12 @@ export class TreinosListaComponent implements OnInit {
     private rota: Router) { }
 
   ngOnInit(): void {
-    this.servicoTreino
+/*  this.servicoTreino
     .getTreino()
     .subscribe(respostSucesso =>  
       this.treinos = respostSucesso);
       console.log('que erro!!!!')
-    
+  */  
   }
 
   consultar(){

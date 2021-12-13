@@ -1,3 +1,6 @@
+import { AlimentosRestricaoService } from './alimentos-restricao.service';
+import { AlimentosrestricaoModule } from './nutricao/alimentosrestricao/alimentosrestricao.module';
+import { RetricaoalimentarModule } from './nutricao/retricaoalimentar/retricaoalimentar.module';
 import { EnderecosModule } from './registros/enderecos/enderecos.module';
 import { PessoasModule } from './registros/pessoas/pessoas.module';
 import { TreinosModule } from './atividadefisica/treinos/treinos.module';
@@ -17,6 +20,7 @@ import { TemplateModule } from './template/template.module';
 import { HomeComponent } from './home/home.component'
 import { FormsModule } from '@angular/forms';
 import { PessoasService } from './pessoas.service';
+import { RestricaoalimentarService } from './restricaoalimentar.service';
 
 @NgModule({
   declarations: [
@@ -36,12 +40,17 @@ import { PessoasService } from './pessoas.service';
     EquipamentosModule,
     TreinosModule,
     PessoasModule,
-    EnderecosModule
+    EnderecosModule,
+    RetricaoalimentarModule,
+    AlimentosrestricaoModule
+
   ],
   providers: [
     PessoasService,
     EquipamentosService,
-    AlimentosService
+    AlimentosService,
+    RestricaoalimentarService,
+    AlimentosRestricaoService
   ],
   bootstrap: [AppComponent]
 })

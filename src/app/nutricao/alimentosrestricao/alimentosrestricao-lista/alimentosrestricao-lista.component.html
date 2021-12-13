@@ -1,0 +1,72 @@
+<h1 class="mt-4">Notas</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Consulta</li>
+</ol>
+
+<div class="container">
+
+  <form #consultarAlimentosRestricaoForm="ngForm" (submit)="consultarAlimentosRestricao()">
+    <div class="row">
+      <div class="col-md-6">
+        <label>Id Do Alimento</label>
+        <input type="text" [(ngModel)]="nome" name="nome" id="inputNome" class="form-control">
+      </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-search"></i>Consultar
+        </button>
+
+        <button type="button" class="btn btn-warning ml-1" routerLink="/alimentosRestricaoForm">
+          <i class="fa fa-plus"></i>Novo
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <br />
+
+  <div class="row">
+    <div class="alert alert-warning" role="alert" *ngIf="mensagem">
+      {{ mensagem }}
+    </div>
+
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>alimentosRestricao</th>
+            <th>alimento</th>
+            <th>RestricaoAlimentar</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let minhaLista of lista">
+            <td>{{ minhaLista.alimentosRestricao.id }}</td>
+            <td>{{ minhaLista.alimento.nome }} </td>
+            <td>{{ minhaLista.restricaoAlimentar.nome }}</td>
+
+            <td>
+              <button class="btn btn-primary" routerLink="/alimentosRestricaoForm/{{ minhaLista.id }}">
+                <i class="fa fa-pen-square"></i>
+              </button>
+
+              <button class="btn btn-danger" (click)="preparaDelecao(minhaLista)" data-toggle="modal"
+                data-target="#modalSelecao">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+</div>

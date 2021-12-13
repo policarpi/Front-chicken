@@ -71,7 +71,6 @@
 
 
 
--->
 
 <h1 class="mt-4">Consulta</h1>
 <ol class="breadcrumb mb-4">
@@ -121,7 +120,7 @@
           <tr *ngFor="let treinos of treinos">
             <td>{{ treinos.id }}</td>
             <td>{{ treinos.pessoa.nome }}</td>
-            <td>{{ treinos.equipamentos.equipamentosnome }}</td>
+            <td>{{ treinos.equipamento.equipamentosnome }}</td>
             <td>{{ treinos.quantidade }}</td>
             <td>{{ treinos.repeticao }}</td>
             <td>{{ treinos.peso }}</td>
@@ -162,4 +161,92 @@
       </div>
     </div>
   </div>
+</div>
+-->
+
+<h1 class="mt-4">Consulta</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+ <div class="container">
+     <form #consultaForm="ngForm" (submit)="consultar()">
+        <div class="row">
+            <div div class="col-md-6">
+                <label for="inputNome">Meu treino: </label>
+                <input type="text" [(ngModel)]="nome" name="nome" id="inputNome" class="form-control">
+            </div>
+             <br/>
+                <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-search"></i> consultar
+                    </button>
+                    <button type="button" class="btn btn-warning" routerLink="/treinosForm">
+                        <i class="fa fa-plus"></i> Novo
+                    </button>
+                </div>
+            </div>
+        </div>
+     </form>
+     
+     <br/>
+
+     <div class="row">
+        <div class="alert alert-warning" role="alert" *ngIf="message">
+            {{ message }}
+        </div>
+
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Pessoa</th>
+                        <th>Equipametos</th>
+                        <th>quantidade</th>
+                        <th>repeticao</th>
+                        <th>peso</th>
+                        <th>ficha</th>
+                        <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let treinos of lista">
+                        <td>{{ treinos.pessoa.nome }}</td>
+                        <td>{{ treinos.equipamentos.equipamentosnome }}</td>
+                        <td>{{ treinos.quantidade }}</td>
+                        <td>{{ treinos.repeticao }}</td>
+                        <td>{{ treinos.peso }}</td>
+                        <td>{{ treinos.ficha }}</td>
+                        <td><button class="btn btn-primary" routerLink="/treinosForm/{{ treinos.id }}">
+                            <i class="fa fa-pen-square"></i>
+                          </button>
+            
+                          <button class="btn btn-danger" (click)="preparaDelecao(treinos)" data-toggle="modal"
+                            data-target="#modalSelecao">
+                            <i class="fa fa-trash"></i>
+                          </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+     </div>
+     <div id="modalSelecao" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4>Confirmação</h4>
+            </div>
+    
+            <div class="modal-body" *ngIf="treinoSelecionado">
+              Confirma a deleção do treinos {{ treinoSelecionado.id }} ?
+            </div>
+    
+            <div class="modal-footer">
+              <button class="btn btn-success" (click)="deletarTreino()" data-dismiss="modal">Confirmar</button>
+    
+              <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
 </div>

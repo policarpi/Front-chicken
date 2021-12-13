@@ -16,11 +16,11 @@ export class RefeicoesService {
   constructor(private http: HttpClient) { }
 
   salvarRefeicoes(refeicoes: Refeicoes) : Observable<Refeicoes>{
-    return this.http.post<Refeicoes>('http://localhost:8080/refeicoes',refeicoes);
+    return this.http.post<Refeicoes>('http://localhost:8080/refeicoes/',refeicoes);
   }
 
   getRefeicoes() : Observable<Refeicoes[]>{
-    return this.http.get<Refeicoes[]>(this.apiURLRefeicoe);
+    return this.http.get<Refeicoes[]>('http://localhost:8080/refeicoes/');
   }
 
   getRefeicoesById(id:number) : Observable<Refeicoes>{

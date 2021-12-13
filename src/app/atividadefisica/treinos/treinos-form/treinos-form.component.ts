@@ -26,7 +26,7 @@ export class TreinosFormComponent implements OnInit {
               private rota: Router,
               private servicoPessoa: PessoasService,
               private servicoEquipamento: EquipamentosService) {
-    this.treinos = new Treinos();
+              this.treinos = new Treinos();
   }
 
   ngOnInit(): void {
