@@ -25,6 +25,7 @@ export class AlimentosrestricaoFormComponent implements OnInit {
         this.alimentoRestrito = new AlimentosRestricao();
   }
 
+  
   ngOnInit(): void {
       this.servicoAlimento
           .getAlimentos()

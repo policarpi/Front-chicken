@@ -22,6 +22,8 @@ import { HomeComponent } from './home/home.component'
 import { FormsModule } from '@angular/forms';
 import { PessoasService } from './pessoas.service';
 import { RestricaoalimentarService } from './restricaoalimentar.service';
+import { FisiologiaService } from './fisiologia.service';
+import { FisiologiaModule } from './registros/fisiologia/fisiologia.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { RestricaoalimentarService } from './restricaoalimentar.service';
     PessoasModule,
     EnderecosModule,
     RetricaoalimentarModule,
-    AlimentosrestricaoModule
+    AlimentosrestricaoModule,
+    FisiologiaModule
 
   ],
   providers: [
@@ -52,8 +55,12 @@ import { RestricaoalimentarService } from './restricaoalimentar.service';
     AlimentosService,
     RestricaoalimentarService,
     AlimentosRestricaoService,
+<<<<<<< HEAD
+    FisiologiaService
+=======
     DietaService,
 
+>>>>>>> 966858874515dc6243bdf6f804c966b43aaffe02
   ],
   bootstrap: [AppComponent]
 })

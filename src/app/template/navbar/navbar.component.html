@@ -5,10 +5,17 @@
         <a class="nav-link" href="#">Home</a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="pessoasLista">Pessoas</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+        aria-haspopup="true" aria-expanded="false" href="#"> Pessoas </a>
+
+        <div class="dropdown-menu">
+          <a class="dropdown-item" routerLink="pessoasLista">Pessoas Cadastros</a>
+          <a class="dropdown-item" routerLink="fisiologiaLista">Fisiologias</a>
+         </div>
       </li>
 
+      
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
         href="#" aria-haspopup="true" aria-expanded="false">Atividades Fisicas</a>

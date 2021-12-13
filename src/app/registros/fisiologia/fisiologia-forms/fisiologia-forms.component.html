@@ -1,0 +1,68 @@
+<h1 class="mt-4">Treinos</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Novo</li>
+</ol>
+<div class="container">
+  <form #form="ngForm" (submit)="onSubmit()">
+      <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role ="alert" *ngIf = "sucesso == true">  Fisiologia salvo/Atulizada com sucesso </div>
+                <div class = "alert alert-danger" role="alert" *ngFor="let erro of errosApi"> </div>
+            </div>
+      
+            <div class="col-md-6">
+              <div class="form-group">
+                  <label>Pessoa: </label>
+                  <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="fisiologia.idPessoa">
+                      <option value="">Selecione...</option>
+                      <option *ngFor="let pessoa of pessoas" [ngValue]="pessoa.id">{{ pessoa.nome }}</option>
+                  </select>
+              </div>
+          </div>
+      </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Tipo: </label>
+                <input class="form-control" [(ngModel)]="fisiologia.tipo" type="text" name="tipo"
+                  id="inputtipo">
+              </div>
+            </div>
+          
+  
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Peso: </label>
+                <input class="form-control" [(ngModel)]="fisiologia.peso" type="text" name="peso">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Altura: </label>
+                <input class="form-control" [(ngModel)]="fisiologia.altura" type="text" name="altura">
+              </div>
+            </div>
+     
+          <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-save"></i> Salvar
+                </button>
+
+                <button type="button" class="btn btn-danger ml-1" routerLink="/fisiologiaLista">
+                    <i class="fa fa-arrow-alt-circle-left"></i> 
+                    Voltar
+                </button>
+            </div>
+          </div>
+          </div>
+        </div>
+  </form>
+</div>

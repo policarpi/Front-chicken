@@ -34,6 +34,7 @@ export class TreinosFormComponent implements OnInit {
     this.servicoPessoa.getPessoas().subscribe(respostaSucesso => this.pessoas = respostaSucesso);
     this.servicoEquipamento.getEquipamentos().subscribe(respostaSucesso =>this.equipamentos = respostaSucesso);
   }
+  
   onSubmit(){
     this.servicoTreinos
     .salvarTreino(this.treinos)
