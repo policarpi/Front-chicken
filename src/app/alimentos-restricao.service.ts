@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AlimentosRestricao } from './nutricao/alimentosrestricao/alimentosrestricao';
 import { environment } from 'src/environments/environment';
-import { buscaAlimentosRestricao } from './nutricao/alimentosrestricao/alimentosrestricao-lista/buscaAlimentosRestricao';
 
 @Injectable({
   providedIn: 'root'
@@ -19,25 +18,16 @@ export class AlimentosRestricaoService {
     return this.http.post<AlimentosRestricao>('http://localhost:8080/alimentosrestricao/',alimentosRestricao);
   }
 
-  
-  buscarAlimentosRestricao(nome: string) : Observable<buscaAlimentosRestricao[]>{
+
+  buscarAlimentosRestricao(nome: string) : Observable<AlimentosRestricaoBusca[]>{
     if(!nome){
       nome = "";
     }
-<<<<<<< HEAD
-    const httpParams = new HttpParams().set("nome",nome);
-    console.log(nome)
-    const url = this.apiURLAlimentosRestricao + "?" + httpParams.toString();
-    console.log(url)
-    return this.http.get<any>(url);
-=======
     const httpParams = new HttpParams().set("nome", nome);
 
     const urlDeBusca = "http://localhost:8080/alimentosrestricao/" + '?' + httpParams.toString();
     return this.http.get<any>(urlDeBusca);
 
-
->>>>>>> 966858874515dc6243bdf6f804c966b43aaffe02
   }
 
   getAlimentosRestricao() : Observable<AlimentosRestricao[]>{

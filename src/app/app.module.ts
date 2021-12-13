@@ -55,13 +55,9 @@ import { FisiologiaModule } from './registros/fisiologia/fisiologia.module';
     AlimentosService,
     RestricaoalimentarService,
     AlimentosRestricaoService,
-<<<<<<< HEAD
-    FisiologiaService
-=======
+    FisiologiaService,
     DietaService,
-
->>>>>>> 966858874515dc6243bdf6f804c966b43aaffe02
-  ],
+ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
