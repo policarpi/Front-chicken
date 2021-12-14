@@ -2,43 +2,47 @@
   <nav class="navbar navbar-dark bg-dark">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="">Home</a>
       </li>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-        aria-haspopup="true" aria-expanded="false" href="#"> Pessoas </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+            aria-haspopup="true" aria-expanded="false" href="#"> Pessoas </a>
 
-        <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="pessoasLista">Pessoas Cadastros</a>
-          <a class="dropdown-item" routerLink="fisiologiaLista">Fisiologias</a>
-          <a class="dropdown-item" routerLink="enderecoLista">Endereços</a>
-         </div>
-      </li>
+            <div class="dropdown-menu">
+              <a class="nav-link scrollto"routerLink="pessoasLista">Pessoas Cadastros</a>
+              <a class="nav-link scrollto" routerLink="fisiologiaLista">Fisiologias</a>
+              <a class="nav-link scrollto" routerLink="enderecoForm">enderecoForm</a>
+             </div>
+          </li>
 
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+            href="#" aria-haspopup="true" aria-expanded="false">Atividades Fisicas</a>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-        href="#" aria-haspopup="true" aria-expanded="false">Atividades Fisicas</a>
+             <div class="dropdown-menu">
+              <a class="nav-link scrollto" routerLink="treinosLista">Treinos</a>
+              <a class="nav-link scrollto" routerLink="equipamentosLista">Equipamentos</a>
+             </div>
+          </li>
 
-         <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="treinosLista">Treinos</a>
-          <a class="dropdown-item" routerLink="equipamentosLista">Equipamentos</a>
-         </div>
-      </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+            aria-haspopup="true" aria-expanded="false" href="#"> Nutrição </a>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-        aria-haspopup="true" aria-expanded="false" href="#"> Nutrição </a>
-
-        <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="alimentosLista">Alimentos</a>
-          <a class="dropdown-item" routerLink="dietasLista">Dietas</a>
-          <a class="dropdown-item" routerLink="refeicoesLista">Refeições</a>
-          <a class="dropdown-item" routerLink="restricaoAlimentarLista">Restrição Alimentar</a>
-          <a class="dropdown-item" routerLink="alimentosRestricaoLista">Alimentos Restrição</a>
-        </div>
-      </li>
+            <div class="dropdown-menu">
+              <a class="nav-link scrollto" routerLink="alimentosLista">Alimentos</a>
+              <a class="nav-link scrollto" routerLink="dietasLista">Dietas</a>
+              <a class="nav-link scrollto" routerLink="refeicoesLista">Refeições</a>
+              <a class="nav-link scrollto" routerLink="restricaoAlimentarLista">Restrição Alimentar</a>
+              <a class="nav-link scrollto" routerLink="alimentosRestricaoLista">Alimentos Restrição</a>
+            </div>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
     </ul>
   </nav>
 </div>
