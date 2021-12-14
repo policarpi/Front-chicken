@@ -1,4 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import { BuscaEndereco } from './registros/enderecos/enderecos-lista/buscaEndereco';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Endereco } from './registros/enderecos/enderecos';
@@ -12,6 +13,17 @@ export class EnderecosService {
 
   salvarEndereco(endereco: Endereco) : Observable<Endereco>{
     return this.http.post<Endereco>('http://localhost:8080/endereco',endereco);
+  }
+
+  buscarEnderecos(nome: string) : Observable<BuscaEndereco[]>{
+    if(!nome){
+      nome = "";
+    }
+    const httpParams = new HttpParams().set("nome", nome);
+
+    const urlDeBusca = "http://localhost:8080/endereco/" + '?' + httpParams.toString();
+    return this.http.get<any>(urlDeBusca);
+
   }
 
   getEndereco() : Observable<Endereco[]>{

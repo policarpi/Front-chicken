@@ -3,6 +3,6 @@ export class Pessoas{
   nome:string;
   sobreNome:string;
   dataNacimento:string;
-  eMail:string;
+  email:string;
   cpf:string;
 }
