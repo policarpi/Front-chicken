@@ -28,27 +28,33 @@
 
       <div class="col-md-5">
         <div class="form-group">
-          <label>Id Pessoa:</label>
-          <input type="text" class="form-control" disabled=true [(ngModel)]="endereco.idPessoa" name="idPessoa">
-        </div>
-      </div>
-
-      <div class="col-md-5">
-        <div class="form-group">
-          <label>cep:</label>
-          <input type="text" class="form-control" [(ngModel)]="endereco.cep" name="cep">
+          <label>Pessoa: </label>
+          <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="endereco.idPessoa">
+            <option value="">Selecione...</option>
+            <option *ngFor="let pessoa of pessoas" [ngValue]="pessoa.id">{{ pessoa.nome }}</option>
+          </select>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>cep:</label>
+          <input type="text" class="form-control" [(ngModel)]="endereco.cep" name="cep">
+        </div>
+      </div>
+
+      <div class="col-md-8">
         <div class="form-group">
           <label>endereco:</label>
           <input type="text" class="form-control" [(ngModel)]="endereco.endereco" name="dataNascimento">
         </div>
       </div>
 
+    </div>
+
+    <div class="row">
       <div class="col-md-2">
         <div class="form-group">
           <label>numero:</label>

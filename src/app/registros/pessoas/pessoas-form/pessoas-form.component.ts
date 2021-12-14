@@ -1,6 +1,6 @@
 import { PessoasService } from './../../../pessoas.service';
 import { Pessoas } from './../pessoas';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./pessoas-form.component.css']
 })
 export class PessoasFormComponent implements OnInit {
+
 
   pessoa: Pessoas;
   sucesso: boolean = false;

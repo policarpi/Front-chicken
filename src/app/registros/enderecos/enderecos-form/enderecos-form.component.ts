@@ -1,8 +1,10 @@
+import { PessoasService } from './../../../pessoas.service';
 import { EnderecosService } from './../../../enderecos.service';
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { Endereco } from '../enderecos';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Pessoas } from '../../pessoas/pessoas';
 
 @Component({
   selector: 'app-enderecos-form',
@@ -11,18 +13,24 @@ import { Observable } from 'rxjs';
 })
 export class EnderecosFormComponent implements OnInit {
 
+
+  pessoas: Pessoas[] = [];
   endereco: Endereco;
   sucesso: boolean = false;
   errosApi: string[];
   id: number;
 
   constructor(private enderecosService: EnderecosService,
+              private servicoPessoa: PessoasService,
               private rota: Router,
               private rotaAtiva: ActivatedRoute) {
     this.endereco = new Endereco();
+
   }
 
   ngOnInit(): void {
+
+    this.servicoPessoa.getPessoas().subscribe(respostaSucesso => this.pessoas = respostaSucesso);
 
      let params: Observable<Params>=this.rotaAtiva.params;
 

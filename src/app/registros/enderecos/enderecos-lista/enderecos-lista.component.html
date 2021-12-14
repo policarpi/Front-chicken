@@ -1,1 +1,88 @@
-<p>enderecos-lista works!</p>
+<h1 class="mt-4">Endereços</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+  <form #consultaForm="ngForm" (submit)="consultarEndereco()">
+    <div class="row">
+      <div div class="col-md-6">
+        <label for="inputNome">Nome da Pessoa: </label>
+        <input type="text" [(ngModel)]="nome" name="nome" id="inputNome" class="form-control">
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-primary">
+            <i class="fa fa-search"></i> consultar
+          </button>
+          <button type="button" class="btn btn-warning" routerLink="/enderecoForm">
+            <i class="fa fa-plus"></i> Novo
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <br />
+
+  <div class="row">
+    <div class="alert alert-warning" role="alert" *ngIf="mensagem">
+      {{ mensagem }}
+    </div>
+
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Pessoa</th>
+            <th>cep</th>
+            <th>endereco</th>
+            <th>numero</th>
+            <th>cidade</th>
+            <th>estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let endereco of listaEnderecoPessoa">
+            <td>{{ endereco.id}}</td>
+            <td>{{ endereco.pessoa.nome }} - {{ endereco.pessoa.sobreNome }}</td>
+            <td>{{ endereco.cep }}</td>
+            <td>{{ endereco.endereco }}</td>
+            <td>{{ endereco.numero }}</td>
+            <td>{{ endereco.cidade }}</td>
+            <td>{{ endereco.estado }}</td>
+            <td>
+              <button class="btn btn-primary" routerLink="/fisiologiaForm/{{ endereco.id }}">
+                <i class="fa fa-pen-square"></i>
+              </button>
+
+              <button class="btn btn-danger" (click)="preparaDelecao(endereco)" data-toggle="modal"
+                data-target="#modalSelecao">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="modalSelecao" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Confirmação</h4>
+        </div>
+
+        <div class="modal-body" *ngIf="enderecoSelecionado">
+          Confirma a deleção {{ enderecoSelecionado.id }} ?
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-success" (click)="deletarEndereco()" data-dismiss="modal">Confirmar</button>
+
+          <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
